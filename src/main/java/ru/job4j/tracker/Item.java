@@ -39,4 +39,13 @@ public class Item {
      * @param description Описание заявки.
      * @param created Дата создания.
      */
+/*
+    public Item(String name, String description, Timestamp created) {
+        //this.id = generateId();
+        this.name = name;
+        this.description = description;
+        this.created = created;
+    }
+*/
+
 }
