@@ -270,9 +270,6 @@ public class MenuTracker {
      */
     private class Exit extends BaseAction {
         private final StartUI su;
-        //public Exit(StartUI su) {
-        //    this.su = su;
-        //}
         /**
          * Method Exit. Конструктор.
          * @param key Значение ключа меню.

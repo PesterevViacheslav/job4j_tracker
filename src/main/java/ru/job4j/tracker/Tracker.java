@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 import java.util.ArrayList;
-
 /**
  * Class Tracker - Обработка заявок. Решение задачи Части 002. ООП. Общая задача на второй модуль.
  *
@@ -70,7 +69,6 @@ public class Tracker implements ITracker {
             result.setId(item.getId());
             result.setName(item.getName());
             result.setDescription(item.getDescription());
-            //result.setChanged(System.currentTimeMillis());
             res = true;
         }
         return res;
@@ -87,7 +85,6 @@ public class Tracker implements ITracker {
         if (result != null) {
             result.setName(item.getName());
             result.setDescription(item.getDescription());
-            //result.setChanged(System.currentTimeMillis());
             res = true;
         }
         return res;

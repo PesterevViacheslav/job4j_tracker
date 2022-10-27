@@ -1,7 +1,5 @@
 package ru.job4j.tracker;
 import ru.job4j.sql.TrackerSQLException;
-import ru.job4j.tracker.ITracker;
-import ru.job4j.tracker.Item;
 import java.sql.*;
 import java.util.ArrayList;
 import java.io.InputStream;
@@ -123,11 +121,8 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     @Override
     public Item add(Item item) {
         try (PreparedStatement sql = this.connection.prepareStatement("INSERT INTO ITEM(item_name, item_description/*, created, changed*/) VALUES(?,?)")) {
-            //sql.setString(1, item.getId());
             sql.setString(1, item.getName());
             sql.setString(2, item.getDescription());
-            //sql.setTimestamp(3, longToTimestamp(item.getCreated()));
-            //sql.setTimestamp(4, longToTimestamp(item.getChanged()));
             sql.executeUpdate();
             item.setId(getCurrentValue());
         } catch (SQLException e) {
@@ -151,7 +146,6 @@ public class TrackerSQL implements ITracker, AutoCloseable {
         }
         return res;
     }
-
     /**
      * Method replace. Замена заявки.
      * @param id ID заявки.
@@ -161,14 +155,10 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     @Override
     public boolean replace(int id, Item item) {
         boolean res = false;
-//        try (PreparedStatement sql = this.connection.prepareStatement("UPDATE ITEM SET ID = ?, ITEM_NAME = ?, ITEM_DESCRIPTION = ?, CREATED = ?, CHANGED = ? WHERE ID = ?")) {
         try (PreparedStatement sql = this.connection.prepareStatement("UPDATE ITEM SET ID = ?, ITEM_NAME = ?, ITEM_DESCRIPTION = ? WHERE ID = ?")) {
-
             sql.setInt(1, Integer.valueOf(item.getId()));
             sql.setString(2, item.getName());
             sql.setString(3, item.getDescription());
-            //sql.setTimestamp(4, longToTimestamp(item.getCreated()));
-            //sql.setTimestamp(5, longToTimestamp(item.getChanged()));
             sql.setInt(4, Integer.valueOf(id));
             sql.executeUpdate();
             if (sql.getUpdateCount() > 0) {
@@ -286,8 +276,6 @@ public class TrackerSQL implements ITracker, AutoCloseable {
         try (PreparedStatement sql = this.connection.prepareStatement("UPDATE ITEM SET ITEM_NAME = ?, ITEM_DESCRIPTION = ?/*, CREATED = ?, CHANGED = ?*/ WHERE ID = ?")) {
             sql.setString(1, item.getName());
             sql.setString(2, item.getDescription());
-            //sql.setTimestamp(3, longToTimestamp(item.getCreated()));
-            //sql.setTimestamp(4, longToTimestamp(item.getChanged()));
             sql.setInt(3, id);
             sql.executeUpdate();
             if (sql.getUpdateCount() > 0) {
