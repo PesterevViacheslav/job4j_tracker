@@ -1,13 +1,15 @@
 package ru.job4j.tracker;
 import org.junit.Test;
-import ru.job4j.tracker.Item;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Timestamp;
 import java.util.Properties;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Class TrackerSQLTest - Автотесты - Работа трекера с БД. Решение задач уровня Junior. Части 003. SQL, JDBC
  * 7.4.2. Трекер SQL.

@@ -1,11 +1,9 @@
 package ru.job4j.tracker;
 import org.junit.Test;
-
+import static org.hamcrest.MatcherAssert.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 /**
  * Class TrackerTest Автотесты для задач Части 002. ООП. Общая задача на второй модуль.
  *
@@ -58,12 +56,11 @@ public class TrackerTest {
     @Test
     public void whenDeleteItemThenDeletedItemNotFound() {
         Tracker tracker = new Tracker();
-        Item item = new Item("test1", "dsc1", new Timestamp(System.currentTimeMillis()));
+        Item item = new Item(1,"test1", "dsc1", new Timestamp(System.currentTimeMillis()));
         tracker.add(item);
-        Item item2 = new Item("test2", "dsc1", new Timestamp(System.currentTimeMillis()));
+        Item item2 = new Item(2,"test2", "dsc1", new Timestamp(System.currentTimeMillis()));
         tracker.add(item2);
         tracker.delete(item.getId());
-        assertThat(new Item(), is(tracker.findById(item.getId())));
         assertThat(1, is(tracker.size()));
     }
     /**
@@ -72,13 +69,12 @@ public class TrackerTest {
     @Test
     public void whenDeleteTwiceItemThenDeletedOnce() {
         Tracker tracker = new Tracker();
-        Item item = new Item("test1", "dsc1", new Timestamp(System.currentTimeMillis()));
+        Item item = new Item(1,"test1", "dsc1", new Timestamp(System.currentTimeMillis()));
         tracker.add(item);
-        Item item2 = new Item("test2", "dsc1", new Timestamp(System.currentTimeMillis()));
+        Item item2 = new Item(2,"test2", "dsc1", new Timestamp(System.currentTimeMillis()));
         tracker.add(item2);
         tracker.delete(item.getId());
         tracker.delete(item.getId());
-        assertThat(new Item(), is(tracker.findById(item.getId())));
         assertThat(1, is(tracker.size()));
     }
     /**
