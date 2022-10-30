@@ -5,3 +5,5 @@ job4j_tracker
 Включает использование Lombok.
 
 Tracker перенесен в отдельный проект, для выполнения заданий по Hibernate
+
+File -> Setting -> Compiler -> Annotation Processors -> Enable annotation processing
