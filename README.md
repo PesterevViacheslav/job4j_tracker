@@ -1,9 +1,26 @@
-job4j_tracker
+# job4j_tracker
+Приложение "Трекер для работы с заявками".
 
-Трекер для работы с заявками.
-Есть возможность добавлять, изменять, удалять и искать заявки.
-Включает использование Lombok.
+## Описание проекта
+- Есть возможность добавлять, изменять, удалять и искать заявки.
 
-Tracker перенесен в отдельный проект, для выполнения заданий по Hibernate
+## Стек технологий
+- Java 17
+- Hibernate 5.5.3
+- PostgreSQL 14
+- Maven 3.8
+- Lombok
 
-File -> Setting -> Compiler -> Annotation Processors -> Enable annotation processing
+## Требования к окружению
+- JDK 17
+- Maven
+- PostgreSQL
+
+## Запуск проекта
+- ```git clone git@github.com/PesterevViacheslav/job4j_tracker.git```
+- Postgres. ```create database tracker;```
+- Прописать креды в ```src/main/resources/db.properties```
+- ```mvn install```
+- File -> Setting -> Compiler -> Annotation Processors -> Enable annotation processing
+
+## Взаимодействие с приложением
