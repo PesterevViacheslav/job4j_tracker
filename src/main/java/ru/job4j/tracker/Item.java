@@ -1,6 +1,8 @@
 package ru.job4j.tracker;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 import lombok.*;
 @Data
 @ToString
@@ -32,5 +34,5 @@ public class Item {
     @NonNull
     private String description;
     @NonNull
-    private Timestamp created;
+    private Timestamp created;// = new Timestamp(System.currentTimeMillis());
 }
